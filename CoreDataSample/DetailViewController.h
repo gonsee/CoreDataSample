@@ -2,15 +2,17 @@
 //  DetailViewController.h
 //  CoreDataSample
 //
-//  Created by 佐藤 新悟 on 2014/04/19.
-//  Copyright (c) 2014年 Simple Beep. All rights reserved.
+//  Created by gonsee on 2014/04/17.
 //
 
 #import <UIKit/UIKit.h>
 
+@class Event;
+
 @interface DetailViewController : UIViewController
 
-@property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) Event *detailItem;
 
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+
 @end

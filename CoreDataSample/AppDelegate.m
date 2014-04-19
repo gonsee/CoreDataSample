@@ -2,8 +2,7 @@
 //  AppDelegate.m
 //  CoreDataSample
 //
-//  Created by 佐藤 新悟 on 2014/04/19.
-//  Copyright (c) 2014年 Simple Beep. All rights reserved.
+//  Created by gonsee on 2014/04/17.
 //
 
 #import "AppDelegate.h"
@@ -105,7 +104,7 @@
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"CoreDataSample.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"MOMSample.sqlite"];
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];

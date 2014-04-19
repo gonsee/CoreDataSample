@@ -2,11 +2,11 @@
 //  DetailViewController.m
 //  CoreDataSample
 //
-//  Created by 佐藤 新悟 on 2014/04/19.
-//  Copyright (c) 2014年 Simple Beep. All rights reserved.
+//  Created by gonsee on 2014/04/17.
 //
 
 #import "DetailViewController.h"
+#import "Event.h"
 
 @interface DetailViewController ()
 - (void)configureView;
@@ -31,7 +31,14 @@
     // Update the user interface for the detail item.
 
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"timeStamp"] description];
+        self.textView.text = [NSString stringWithFormat:
+                              @"timeStamp: %@\nflag: %@\nstrings: %@\ncolor: %@\npoint: %@\nurl: %@",
+                              self.detailItem.timeStamp,
+                              self.detailItem.flag?@"YES":@"NO",
+                              self.detailItem.strings,
+                              self.detailItem.color,
+                              self.detailItem.point,
+                              self.detailItem.url];
     }
 }
 

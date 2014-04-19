@@ -25,6 +25,8 @@
 		39F5FF7719029C9D00AA9B9D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F5FF5219029C9D00AA9B9D /* CoreData.framework */; };
 		39F5FF7F19029C9D00AA9B9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39F5FF7D19029C9D00AA9B9D /* InfoPlist.strings */; };
 		39F5FF8119029C9D00AA9B9D /* CoreDataSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5FF8019029C9D00AA9B9D /* CoreDataSampleTests.m */; };
+		39F5FF8E19029D0500AA9B9D /* BaseManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5FF8B19029D0500AA9B9D /* BaseManagedObject.m */; };
+		39F5FF8F19029D0500AA9B9D /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5FF8D19029D0500AA9B9D /* Event.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,10 @@
 		39F5FF7C19029C9D00AA9B9D /* CoreDataSampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CoreDataSampleTests-Info.plist"; sourceTree = "<group>"; };
 		39F5FF7E19029C9D00AA9B9D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		39F5FF8019029C9D00AA9B9D /* CoreDataSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataSampleTests.m; sourceTree = "<group>"; };
+		39F5FF8A19029D0500AA9B9D /* BaseManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseManagedObject.h; sourceTree = "<group>"; };
+		39F5FF8B19029D0500AA9B9D /* BaseManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseManagedObject.m; sourceTree = "<group>"; };
+		39F5FF8C19029D0500AA9B9D /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		39F5FF8D19029D0500AA9B9D /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +129,7 @@
 		39F5FF5419029C9D00AA9B9D /* CoreDataSample */ = {
 			isa = PBXGroup;
 			children = (
+				39F5FF9019029D1A00AA9B9D /* Models */,
 				39F5FF5D19029C9D00AA9B9D /* AppDelegate.h */,
 				39F5FF5E19029C9D00AA9B9D /* AppDelegate.m */,
 				39F5FF6019029C9D00AA9B9D /* Main.storyboard */,
@@ -131,7 +138,6 @@
 				39F5FF6919029C9D00AA9B9D /* DetailViewController.h */,
 				39F5FF6A19029C9D00AA9B9D /* DetailViewController.m */,
 				39F5FF6C19029C9D00AA9B9D /* Images.xcassets */,
-				39F5FF6319029C9D00AA9B9D /* CoreDataSample.xcdatamodeld */,
 				39F5FF5519029C9D00AA9B9D /* Supporting Files */,
 			);
 			path = CoreDataSample;
@@ -164,6 +170,18 @@
 				39F5FF7D19029C9D00AA9B9D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		39F5FF9019029D1A00AA9B9D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				39F5FF6319029C9D00AA9B9D /* CoreDataSample.xcdatamodeld */,
+				39F5FF8A19029D0500AA9B9D /* BaseManagedObject.h */,
+				39F5FF8B19029D0500AA9B9D /* BaseManagedObject.m */,
+				39F5FF8C19029D0500AA9B9D /* Event.h */,
+				39F5FF8D19029D0500AA9B9D /* Event.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,8 +284,10 @@
 				39F5FF6B19029C9D00AA9B9D /* DetailViewController.m in Sources */,
 				39F5FF6819029C9D00AA9B9D /* MasterViewController.m in Sources */,
 				39F5FF5F19029C9D00AA9B9D /* AppDelegate.m in Sources */,
+				39F5FF8E19029D0500AA9B9D /* BaseManagedObject.m in Sources */,
 				39F5FF6519029C9D00AA9B9D /* CoreDataSample.xcdatamodeld in Sources */,
 				39F5FF5B19029C9D00AA9B9D /* main.m in Sources */,
+				39F5FF8F19029D0500AA9B9D /* Event.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,13 +2,12 @@
 //  MasterViewController.m
 //  CoreDataSample
 //
-//  Created by 佐藤 新悟 on 2014/04/19.
-//  Copyright (c) 2014年 Simple Beep. All rights reserved.
+//  Created by gonsee on 2014/04/17.
 //
 
 #import "MasterViewController.h"
-
 #import "DetailViewController.h"
+#import "Event.h"
 
 @interface MasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -40,12 +39,25 @@
 - (void)insertNewObject:(id)sender
 {
     NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
+    Event *event = [Event insertInContext:context];
     
-    // If appropriate, configure the new managed object.
-    // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-    [newManagedObject setValue:[NSDate date] forKey:@"timeStamp"];
+    event.timeStamp = [NSDate date];
+    
+    event.flag = (arc4random_uniform(2) == 1);
+    
+    event.strings = @[ [[[NSUUID UUID] UUIDString] substringToIndex:8],
+                       [[[NSUUID UUID] UUIDString] substringToIndex:8],
+                       [[[NSUUID UUID] UUIDString] substringToIndex:8] ];
+    
+    event.color = [UIColor colorWithHue:(float)arc4random()/0x100000000
+                             saturation:0.8f
+                             brightness:1.0f
+                                  alpha:1.0f];
+    
+    event.point = [NSValue valueWithCGPoint:CGPointMake(arc4random_uniform(320),
+                                                        arc4random_uniform(568))];
+    
+    event.url = [NSURL URLWithString:@"http://www.yahoo.co.jp/"];
     
     // Save the context.
     NSError *error = nil;
@@ -75,6 +87,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Event *event = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.backgroundColor = event.color;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -109,8 +127,8 @@
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        [[segue destinationViewController] setDetailItem:object];
+        Event *event = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        [[segue destinationViewController] setDetailItem:event];
     }
 }
 
@@ -215,8 +233,8 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
+    Event *event = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = [event.timeStamp description];
 }
 
 @end
